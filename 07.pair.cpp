@@ -2,6 +2,7 @@
 //#include <utility>	// 없어도 상관 없다.
 #include <string>
 using namespace std;
+typename pair
 
 class CTest
 {
@@ -26,11 +27,11 @@ int main()
 	cout << "b : " << b.first << ", " << b.second << endl;
 
 	pair<char, CTest> c('c', CTest(2));	// class도 요소로 묶기 가능
-										//pair<char, CTest> c = pair<char, CTest>('c', 2);
+	//pair<char, CTest> c = pair<char, CTest>('c', 2);
 	cout << "c : " << get<0>(c) << ", " << get<1>(c).GetData() << endl;	// tuple에서 사용하는 get으로 요소에 접근하는 방법도 가능
 
-	cout << "size : " << tuple_size<pair<const char*, int>>::value << endl;	// tuple에서 요소의 갯수 구하기
-																			//cout << "element : " << tuple_element<0, pair<int, float>>::type << endl;	// pair의 요소의 자료형이 뭔지 알려준다.
+	cout << "size : " << tuple_size<pair<const char*, int>>::value << endl;	// 요소의 갯수 구하기
+	//cout << "element : " << tuple_element<0, pair<int, float>>::type << endl;	// pair의 요소의 자료형이 뭔지 알려준다.
 
 	TestFunc(make_pair('d', "4"));	// make_pair로 값을 가지면서 이름이 없는 pair를 생성할 수 있다.
 
