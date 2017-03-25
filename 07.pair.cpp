@@ -23,17 +23,18 @@ int main()
 	cout << "a : " << a.first << ", " << a.second << endl;	// first, second로 각 요소에 접근가능
 
 	pair<const char*, int> b("b", 1);
-	cout << "b : " << b.first << ", "<< b.second << endl;
-	
+	cout << "b : " << b.first << ", " << b.second << endl;
+
 	pair<char, CTest> c('c', CTest(2));	// class도 요소로 묶기 가능
+										//pair<char, CTest> c = pair<char, CTest>('c', 2);
 	cout << "c : " << get<0>(c) << ", " << get<1>(c).GetData() << endl;	// tuple에서 사용하는 get으로 요소에 접근하는 방법도 가능
 
 	cout << "size : " << tuple_size<pair<const char*, int>>::value << endl;	// tuple에서 요소의 갯수 구하기
-	//cout << "element : " << tuple_element<0, pair<int, float>>::type << endl;	// pair의 요소의 자료형이 뭔지 알려준다.
+																			//cout << "element : " << tuple_element<0, pair<int, float>>::type << endl;	// pair의 요소의 자료형이 뭔지 알려준다.
 
 	TestFunc(make_pair('d', "4"));	// make_pair로 값을 가지면서 이름이 없는 pair를 생성할 수 있다.
 
-	pair<int, float> e(1, 3.3);		// 복사생성 방법
+	pair<int, float> e(a);		// 복사생성 방법
 	cout << e.first << ", " << e.second << endl;
 }
 
@@ -60,16 +61,21 @@ int main()
 // CTest b(2);로 만들어서 b를 전달하지 않고 CTest(2)를 사용하여 값을 가진 이름없는 객체를 바로 전달이 가능하다.
 
 // 29행
+// 각 요소에 값을 전달하는 다른 방법이다.
+// ()는 객체를 생성하면서 값을 가지는 방법이며, 이 방법은 객체를 생성후 값을 전달하는 느낌이다.
+// 길기 때문에 pair<char, CTest>를 auto로 사용이 가능하지만 그래도 기니까 기존의 방법을 사용하자.
+
+// 30행
 // tuple에 있는 get을 사용하여 각 요소에 접근할 수 있다.
 
-// 31행
+// 32행
 // tuple에서 사용하는 tuple_size::value로 요소가 몇개있는지 구할 수 있다.
 
-// 32행
+// 33행
 // tuple_element:type으로 요소의 자료형이 뭔지 알 수 있다.
 // 하지만 왜인지 안되네.
 
-// 34행
+// 35행
 // make_pair로 값을 가지지만 이름없는 pair를 함수로 전달할 수 있다.
 
 // 14 ~ 18행
@@ -80,7 +86,7 @@ int main()
 // string 컨테이너는 클래스이므로 생성자가 호출된다.
 // 그러므로 단순한 문자열을 다룬다면 const char*를 사용하는게 더 좋을것이다.
 
-// 36행
+// 37행
 // pair를 복사생성하는 방법이다.
 // 그냥 대입연산자를 사용해도 괜찮다.
 // 하지만 대입연산자는 기존에 있던 객체를 대입할 때만 사용하자.
